@@ -1,13 +1,16 @@
 ﻿using ManajemenPustakaApp.BookMenu;
+using ManajemenPustakaApp.LoanMenu;
 using ManajemenPustakaApp.MemberMenu;
 
 public class LibraryApp
 {
     private LibraryService libraryService;
+    private LoanManagement loanManagement;
 
     public LibraryApp()
     {
         libraryService = new LibraryService();
+        loanManagement = new LoanManagement();
     }
 
     public void Run()
@@ -20,7 +23,8 @@ public class LibraryApp
             Console.WriteLine("=== Aplikasi Manajemen Pustaka ===");
             Console.WriteLine("1. Manajemen Buku");
             Console.WriteLine("2. Manajemen Anggota");
-            Console.WriteLine("3. Keluar");
+            Console.WriteLine("3. Manajemen Peminjaman Buku");
+            Console.WriteLine("4. Keluar");
             Console.Write("Pilih menu: ");
             string choice = Console.ReadLine();
 
@@ -35,6 +39,9 @@ public class LibraryApp
                     memberManagement.Run();
                     break;
                 case "3":
+                    loanManagement.Run();
+                    break;                    
+                case "4":
                     isRunning = false;
                     break;
                 default:
@@ -50,4 +57,3 @@ public class LibraryApp
         app.Run();
     }
 }
-
